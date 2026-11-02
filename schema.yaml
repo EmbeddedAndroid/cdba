@@ -44,6 +44,13 @@ properties:
           description: mark USB as always on
           type: boolean
 
+        alpaca_edl_bit:
+          description: >-
+            Alpaca TTL output bit wired to the board's EDL (force USB boot)
+            line; it is held while powering on for EDL flashing
+          type: integer
+          minimum: 3
+
         fastboot_key_timeout:
           description: timeout of the fastbook key press
           type: integer

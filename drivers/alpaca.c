@@ -121,6 +121,10 @@ static void alpaca_key(struct device *dev, int key, bool asserted)
 	case DEVICE_KEY_POWER:
 		alpaca_output_bit(dev->cdb, 1, asserted);
 		break;
+	case DEVICE_KEY_EDL:
+		if (dev->alpaca_edl_bit)
+			alpaca_output_bit(dev->cdb, dev->alpaca_edl_bit, asserted);
+		break;
 	}
 }
 

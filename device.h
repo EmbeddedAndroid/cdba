@@ -47,6 +47,7 @@ struct device {
 	struct edl *edl;
 	struct fastboot *fastboot;
 	unsigned int fastboot_key_timeout;
+	unsigned int alpaca_edl_bit;
 	unsigned int power_key_press_ms;
 	int state;
 	enum power_on_mode power_on_mode;

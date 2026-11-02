@@ -139,7 +139,10 @@ Alpaca boards enter EDL through the Alpaca firmware's primary EDL output, TTL
 output bit 4, which is held from before power is applied until 2 seconds after
 the power key (bit 1) is released. Set qdl_serial to the serial number of the
 board's EDL device (the "_SN:" token of its USB product string) when more than
-one board on the host can enter EDL.
+one board on the host can enter EDL. A board with neither qdl_serial nor
+qdl_programmer does not watch for EDL devices, so another board entering EDL
+cannot end its session; set qdl_serial on such a board to get the "device
+entered EDL unexpectedly" ramdump notice back for that board alone.
 
   - board: testboard
     console: /dev/serial/by-id/usb-1234-if00-port0

@@ -36,13 +36,19 @@ static void *alpaca_open(struct device *dev)
 
 	dev->has_power_key = true;
 
-	/* EDL power-on timing of Qualcomm's test automation controller for QRDs */
+	/*
+	 * EDL power-on timing of Qualcomm's test automation controller for
+	 * QRDs, except the power key: after a power key PON the firehose
+	 * programmer shuts the device down if the press it measures is
+	 * shorter than 2500 ms, which it is whenever it starts after the key
+	 * has been released (e.g. qdl waiting for a large image upload).
+	 */
 	if (!dev->edl_power_delay_ms)
 		dev->edl_power_delay_ms = 500;
 	if (!dev->edl_usb_delay_ms)
 		dev->edl_usb_delay_ms = 900;
 	if (!dev->edl_power_key_press_ms)
-		dev->edl_power_key_press_ms = 1300;
+		dev->edl_power_key_press_ms = 3000;
 
 	alpaca = calloc(1, sizeof(*alpaca));
 

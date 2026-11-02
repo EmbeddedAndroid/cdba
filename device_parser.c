@@ -275,8 +275,6 @@ static void parse_board(struct device_parser *dp)
 				dev->boot = device_fastboot_flash_reboot;
 		} else if (!strcmp(key, "description")) {
 			dev->description = strdup(value);
-		} else if (!strcmp(key, "alpaca_edl_bit")) {
-			dev->alpaca_edl_bit = strtoul(value, NULL, 10);
 		} else if (!strcmp(key, "fastboot_key_timeout")) {
 			dev->fastboot_key_timeout = strtoul(value, NULL, 10);
 		} else if (!strcmp(key, "power_key_press_ms")) {

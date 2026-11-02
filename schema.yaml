@@ -44,13 +44,6 @@ properties:
           description: mark USB as always on
           type: boolean
 
-        alpaca_edl_bit:
-          description: >-
-            Alpaca TTL output bit wired to the board's EDL (force USB boot)
-            line; it is held while powering on for EDL flashing
-          type: integer
-          minimum: 3
-
         fastboot_key_timeout:
           description: timeout of the fastbook key press
           type: integer
@@ -133,7 +126,9 @@ properties:
           $ref: "#/$defs/device_path"
 
         alpaca:
-          description: Alpaca board control device path
+          description: >-
+            Alpaca board control device path; TTL output bits 1, 2 and 4 drive
+            the power key, the fastboot (volume down) key and EDL
           $ref: "#/$defs/device_path"
 
         pic32cx:

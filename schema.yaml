@@ -87,7 +87,9 @@ properties:
           type: string
 
         qdl_serial:
-          description: serial number of the EDL device to use for QDL flashing
+          description: >-
+            serial number of the EDL device to use for QDL flashing; when set,
+            EDL devices with a different serial are ignored
           type: string
 
         qdl_storage:

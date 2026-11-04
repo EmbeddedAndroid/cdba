@@ -82,7 +82,14 @@ static void msg_select_board(const void *param)
 		fprintf(stderr, "failed to open %s\n", (const char *)param);
 		watch_quit();
 	} else {
-		device_edl_open(selected_device, edl_present);
+		/*
+		 * Without a qdl_serial every EDL device on the host matches,
+		 * and the client ends the session on an EDL event it did not
+		 * request, so a board that is neither identified nor flashed
+		 * through EDL must not watch for one.
+		 */
+		if (selected_device->qdl_serial || selected_device->qdl_programmer)
+			device_edl_open(selected_device, edl_present);
 		device_fastboot_open(selected_device, &fastboot_ops);
 	}
 

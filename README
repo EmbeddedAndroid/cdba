@@ -143,6 +143,8 @@ edl_power_key_press_ms board options override these times.
 
 Set qdl_serial to the serial number of the board's EDL device (the "_SN:" token
 of its USB product string) when more than one board on the host can enter EDL.
+A board with neither qdl_serial nor qdl_programmer does not watch for EDL
+devices, so another board entering EDL cannot end its session.
 
   - board: testboard
     console: /dev/serial/by-id/usb-1234-if00-port0
